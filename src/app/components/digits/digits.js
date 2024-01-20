@@ -10,12 +10,13 @@ const CLASSES = {
 };
 
 export default class Digits extends View {
-  constructor() {
+  constructor(calculator) {
     const params = {
       tag: "div",
       classNames: [CLASSES.grid],
     };
     super(params);
+    this.calculator = calculator;
     this.configureView();
   }
 
@@ -26,6 +27,10 @@ export default class Digits extends View {
           tag: "div",
           classNames: [CLASSES.digit, CLASSES.large],
           textContent: digit,
+          callback: () => {
+            this.calculator.addValue(digit);
+            this.calculator.updateDisplay();
+          },
         });
         this.viewElement.addInnerElement(button);
       } else {
@@ -33,6 +38,10 @@ export default class Digits extends View {
           tag: "div",
           classNames: [CLASSES.digit],
           textContent: digit,
+          callback: () => {
+            this.calculator.addValue(digit);
+            this.calculator.updateDisplay();
+          },
         });
         this.viewElement.addInnerElement(button);
       }

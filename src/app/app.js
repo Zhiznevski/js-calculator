@@ -4,6 +4,7 @@ import InputField from "./components/input/input-field";
 import Creator from "../utils/Creator";
 import Operations from "./components/operations/operations";
 import Functions from "./components/functions/functions";
+import Calculator from "./calculator";
 
 const CLASSES = {
   wrapper: "wrapper",
@@ -13,8 +14,12 @@ const CLASSES = {
 
 export default class App {
   constructor() {
+    this.inputField = new InputField();
+    this.calculator = new Calculator(
+      this.inputField.prevValue,
+      this.inputField.currentValue,
+    );
     this.createAppView();
-    // this.calculator = new Calculator();
   }
 
   createAppView() {
@@ -24,19 +29,18 @@ export default class App {
       classNames: [CLASSES.keyboard],
     });
     const functions = new Functions();
-    const digits = new Digits();
+    const digits = new Digits(this.calculator);
     const panel = new Creator({ tag: "div", classNames: [CLASSES.panel] });
     panel
       .getElement()
       .append(functions.getHtmlElement(), digits.getHtmlElement());
-    const operations = new Operations();
+    const operations = new Operations(this.calculator);
     keyboard
       .getElement()
       .append(panel.getElement(), operations.getHtmlElement());
-    const inputField = new InputField();
     wrapper
       .getElement()
-      .append(inputField.getHtmlElement(), keyboard.getElement());
+      .append(this.inputField.getHtmlElement(), keyboard.getElement());
     document.body.append(wrapper.getElement());
   }
 }

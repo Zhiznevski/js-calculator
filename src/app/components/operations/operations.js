@@ -9,12 +9,13 @@ const CLASSES = {
 };
 
 export default class Operations extends View {
-  constructor() {
+  constructor(calculator) {
     const params = {
       tag: "div",
       classNames: [CLASSES.grid],
     };
     super(params);
+    this.calculator = calculator;
     this.configureView();
   }
 
@@ -24,6 +25,7 @@ export default class Operations extends View {
         tag: "div",
         classNames: [CLASSES.operation],
         textContent: el,
+        callback: () => this.calculator.setOperation(el),
       });
       this.viewElement.addInnerElement(button);
     });

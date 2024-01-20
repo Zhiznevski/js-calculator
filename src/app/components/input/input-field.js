@@ -19,18 +19,18 @@ export default class InputField extends View {
   }
 
   configureView() {
-    const prevValue = new Creator({
+    this.prevValue = new Creator({
       tag: "div",
       classNames: [CLASSES.prevValue],
       textContent: "123",
     });
-    const currentValue = new Creator({
+    this.currentValue = new Creator({
       tag: "div",
       classNames: [CLASSES.currentValue],
       textContent: "123",
     });
     this.viewElement
       .getElement()
-      .append(prevValue.getElement(), currentValue.getElement());
+      .append(this.prevValue.getElement(), this.currentValue.getElement());
   }
 }

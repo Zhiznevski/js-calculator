@@ -1,0 +1,20 @@
+
+.digit {
+    cursor: pointer;
+    font-size: 2rem;
+    background-color:#242933;
+    color: #CBE1FF;
+    padding: 1em;
+    text-align: center;
+}
+
+.digits-grid {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #161A20;
+}
+
+.digit-large {
+    grid-column: span 2;
+}

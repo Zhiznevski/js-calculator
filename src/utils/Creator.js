@@ -18,7 +18,7 @@ export default class Creator {
 
   createElement(params) {
     this.element = document.createElement(params.tag);
-    this.setCssClasses(params.cssClasses);
+    this.setCssClasses(params.classNames);
     this.setTextContent(params.textContent);
     this.setCallback(params.callback);
   }
@@ -28,7 +28,7 @@ export default class Creator {
   }
 
   setCallback(callback) {
-    this.element.addEventListener("click", (e) => callback(e));
+    if (callback) this.element.addEventListener("click", (e) => callback(e));
   }
 
   setCssClasses(classes = []) {

@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #CBE1FF;
+    width: 375px;
+    margin: 0 auto;
+}
+.keyboard {
+    background-color: #161A20;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 4px;
+    padding-bottom: 5px;
+
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

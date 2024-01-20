@@ -1,0 +1,15 @@
+.operation {
+    cursor: pointer;
+    font-size: 2rem;
+    background-color:#363E4D;
+    color: #CBE1FF;
+    padding: 1em;
+    text-align: center;
+}
+
+.operation-grid {
+    display: grid;
+    grid-template-rows: repeat(5); 
+    gap: 4px;
+    background-color: #161A20;
+}

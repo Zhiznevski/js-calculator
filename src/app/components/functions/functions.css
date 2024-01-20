@@ -1,0 +1,19 @@
+.function-button {
+    cursor: pointer;
+    font-size: 2rem;
+    background-color:#0060E5;
+    color: #CBE1FF;
+    padding: 1em;
+    text-align: center;
+}
+
+.delete-button {
+    font-size: 1.5rem;
+    line-height: 3rem;
+}
+.functions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    background-color: #161A20;
+}

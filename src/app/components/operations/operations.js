@@ -33,6 +33,7 @@ export default class Operations extends View {
       tag: "div",
       classNames: [CLASSES.operation],
       textContent: "=",
+      callback: () => this.calculator.calculate(),
     });
     this.viewElement.addInnerElement(equal);
   }

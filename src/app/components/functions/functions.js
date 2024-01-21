@@ -5,16 +5,16 @@ import "./functions.css";
 const CLASSES = {
   grid: "functions-grid",
   function: "function-button",
-  delete: "delete-button",
 };
 
 export default class Functions extends View {
-  constructor() {
+  constructor(calculator) {
     const params = {
       tag: "div",
       classNames: [CLASSES.grid],
     };
     super(params);
+    this.calculator = calculator;
     this.configureView();
   }
 
@@ -26,13 +26,15 @@ export default class Functions extends View {
     });
     const AC = new Creator({
       tag: "div",
-      classNames: [CLASSES.function, CLASSES.delete],
+      classNames: [CLASSES.function],
       textContent: "AC",
+      callback: () => this.calculator.clearAll(),
     });
     const percent = new Creator({
       tag: "div",
       classNames: [CLASSES.function],
       textContent: "%",
+      callback: () => this.calculator.setOperation("%"),
     });
     this.viewElement.addInnerElement(AC);
     this.viewElement.addInnerElement(plusMinus);

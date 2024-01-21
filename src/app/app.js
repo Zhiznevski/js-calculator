@@ -28,7 +28,7 @@ export default class App {
       tag: "div",
       classNames: [CLASSES.keyboard],
     });
-    const functions = new Functions();
+    const functions = new Functions(this.calculator);
     const digits = new Digits(this.calculator);
     const panel = new Creator({ tag: "div", classNames: [CLASSES.panel] });
     panel

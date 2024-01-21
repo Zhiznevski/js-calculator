@@ -22,15 +22,12 @@ export default class Digits extends View {
 
   configureView() {
     DIGITS.forEach((digit) => {
-      if (digit === 0) {
+      if (digit === "0") {
         const button = new Creator({
           tag: "div",
           classNames: [CLASSES.digit, CLASSES.large],
           textContent: digit,
-          callback: () => {
-            this.calculator.addValue(digit);
-            this.calculator.updateDisplay();
-          },
+          callback: () => this.calculator.addValue(digit),
         });
         this.viewElement.addInnerElement(button);
       } else {
@@ -38,10 +35,7 @@ export default class Digits extends View {
           tag: "div",
           classNames: [CLASSES.digit],
           textContent: digit,
-          callback: () => {
-            this.calculator.addValue(digit);
-            this.calculator.updateDisplay();
-          },
+          callback: () => this.calculator.addValue(digit),
         });
         this.viewElement.addInnerElement(button);
       }

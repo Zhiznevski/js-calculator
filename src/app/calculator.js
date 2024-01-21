@@ -2,8 +2,8 @@ export default class Calculator {
   constructor(prevInputElement, currentInputElement) {
     this.prevInputElement = prevInputElement;
     this.currentInputElement = currentInputElement;
-    this.currentValue = null;
-    this.prevValue = null;
+    this.currentValue = "";
+    this.prevValue = "";
     this.operation = null;
   }
 
@@ -11,22 +11,61 @@ export default class Calculator {
     this.currentValue = "";
     this.prevValue = "";
     this.operation = null;
+    this.updateInputField();
   }
 
   addValue(value) {
-    this.currentValue = value;
-    console.log(this.currentValue);
+    if (this.currentValue.includes(".") && value === ".") {
+      return;
+    }
+    // if(this.currentValue.startsWith('0') && value === '0') {
+    //     return;
+    // }
+    this.currentValue = `${this.currentValue}${value}`;
+    console.log(typeof this.currentValue, typeof value);
+    this.updateInputField();
   }
 
   setOperation(operation) {
+    if (this.currentValue === "") {
+      return;
+    }
     this.operation = operation;
-    console.log(this.operation);
+    this.prevValue = this.currentValue;
+    this.currentValue = "";
+    this.updateInputField();
   }
 
-  calculate() {}
+  calculate() {
+    let result;
+    const prev = parseFloat(this.prevValue);
+    const current = parseFloat(this.currentValue);
+    console.log(prev, current);
+    if (Number.isNaN(prev) || Number.isNaN(current)) return;
+    if (this.operation === "+") {
+      result = prev + current;
+    }
+    if (this.operation === "-") {
+      result = prev - current;
+    }
+    if (this.operation === "*") {
+      result = prev * current;
+    }
+    if (this.operation === "/") {
+      result = prev / current;
+    }
+    if (this.operation === "%") {
+      result = parseFloat((prev / 100) * current);
+    }
+    this.currentValue = result;
+    this.operation = null;
+    this.prevValue = "";
+    this.updateInputField();
+  }
 
-  updateDisplay() {
+  updateInputField() {
     this.currentInputElement.setTextContent(this.currentValue);
+    this.prevInputElement.setTextContent(this.prevValue);
   }
 
   switchSign() {}

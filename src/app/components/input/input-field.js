@@ -22,12 +22,10 @@ export default class InputField extends View {
     this.prevValue = new Creator({
       tag: "div",
       classNames: [CLASSES.prevValue],
-      textContent: "123",
     });
     this.currentValue = new Creator({
       tag: "div",
       classNames: [CLASSES.currentValue],
-      textContent: "123",
     });
     this.viewElement
       .getElement()

@@ -1,3 +1,4 @@
+import { FUNCTIONS } from "../../../data/data";
 import Creator from "../../../utils/Creator";
 import View from "../../../utils/View";
 import "./functions.css";
@@ -22,19 +23,19 @@ export default class Functions extends View {
     const plusMinus = new Creator({
       tag: "div",
       classNames: [CLASSES.function],
-      textContent: "±",
+      textContent: FUNCTIONS.switchSign,
       callback: () => this.calculator.switchSign(),
     });
     const AC = new Creator({
       tag: "div",
       classNames: [CLASSES.function],
-      textContent: "AC",
+      textContent: FUNCTIONS.clearAll,
       callback: () => this.calculator.clearAll(),
     });
     const percent = new Creator({
       tag: "div",
       classNames: [CLASSES.function],
-      textContent: "%",
+      textContent: FUNCTIONS.percent,
       callback: () => this.calculator.setOperation("%"),
     });
     this.viewElement.addInnerElement(AC);

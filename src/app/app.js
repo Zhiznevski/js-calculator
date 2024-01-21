@@ -10,6 +10,12 @@ const CLASSES = {
   wrapper: "wrapper",
   keyboard: "keyboard",
   panel: "panel",
+  themeBtn: "themeBtn",
+  wrapperLightMode: "wrapper-light-mode",
+  bodyLightMode: "body-ligth-mode",
+  digitsLightMode: "digits-light-mode",
+  themeBtnLightMode: "themeBtn-light-mode",
+  funcLightMode: "func-light-mode",
 };
 
 export default class App {
@@ -23,24 +29,46 @@ export default class App {
   }
 
   createAppView() {
-    const wrapper = new Creator({ tag: "div", classNames: [CLASSES.wrapper] });
+    this.themeBtn = new Creator({
+      tag: "div",
+      classNames: [CLASSES.themeBtn],
+      callback: () => this.switchTheme(),
+    });
+    this.wrapper = new Creator({ tag: "div", classNames: [CLASSES.wrapper] });
     const keyboard = new Creator({
       tag: "div",
       classNames: [CLASSES.keyboard],
     });
-    const functions = new Functions(this.calculator);
-    const digits = new Digits(this.calculator);
+    this.functions = new Functions(this.calculator);
+    this.digits = new Digits(this.calculator);
     const panel = new Creator({ tag: "div", classNames: [CLASSES.panel] });
     panel
       .getElement()
-      .append(functions.getHtmlElement(), digits.getHtmlElement());
+      .append(this.functions.getHtmlElement(), this.digits.getHtmlElement());
     const operations = new Operations(this.calculator);
     keyboard
       .getElement()
       .append(panel.getElement(), operations.getHtmlElement());
-    wrapper
+    this.wrapper
       .getElement()
-      .append(this.inputField.getHtmlElement(), keyboard.getElement());
-    document.body.append(wrapper.getElement());
+      .append(
+        this.themeBtn.getElement(),
+        this.inputField.getHtmlElement(),
+        keyboard.getElement(),
+      );
+
+    document.body.append(this.wrapper.getElement());
+  }
+
+  switchTheme() {
+    this.wrapper.getElement().classList.toggle(CLASSES.wrapperLightMode);
+    document.body.classList.toggle(CLASSES.bodyLightMode);
+    this.digits.getHtmlElement().childNodes.forEach((element) => {
+      element.classList.toggle(CLASSES.digitsLightMode);
+    });
+    this.themeBtn.getElement().classList.toggle(CLASSES.themeBtnLightMode);
+    this.functions.getHtmlElement().childNodes.forEach((element) => {
+      element.classList.toggle(CLASSES.funcLightMode);
+    });
   }
 }

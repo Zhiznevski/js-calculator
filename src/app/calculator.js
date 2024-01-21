@@ -67,7 +67,9 @@ export default class Calculator {
 
   updateInputField() {
     this.currentInputElement.setTextContent(this.currentValue);
-    this.prevInputElement.setTextContent(this.prevValue);
+    this.prevInputElement.setTextContent(
+      `${this.prevValue} ${this.operation ? this.operation : ""}`,
+    );
   }
 
   switchSign() {

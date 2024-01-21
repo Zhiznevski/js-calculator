@@ -23,6 +23,7 @@ export default class Functions extends View {
       tag: "div",
       classNames: [CLASSES.function],
       textContent: "±",
+      callback: () => this.calculator.switchSign(),
     });
     const AC = new Creator({
       tag: "div",

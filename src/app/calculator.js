@@ -68,7 +68,8 @@ export default class Calculator {
     this.prevInputElement.setTextContent(this.prevValue);
   }
 
-  switchSign() {}
-
-  calculatePercent() {}
+  switchSign() {
+    this.currentValue = (this.currentValue * -1).toString();
+    this.updateInputField();
+  }
 }

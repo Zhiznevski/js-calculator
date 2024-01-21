@@ -1,18 +1,18 @@
 body {
     font-family: 'Roboto';
-    background-color: #E5E5E5;
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #CBE1FF;
+    color: #fff;
     width: 500px;
     margin: 0 auto;
     min-height: 100vh;
     border-radius: 2px;
 }
+
 .keyboard {
     background-color: #161A20;
     display: flex;

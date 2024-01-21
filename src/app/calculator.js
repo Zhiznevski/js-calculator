@@ -18,11 +18,14 @@ export default class Calculator {
     if (this.currentValue.includes(".") && value === ".") {
       return;
     }
-    // if(this.currentValue.startsWith('0') && value === '0') {
-    //     return;
-    // }
+    if (
+      this.currentValue[0] === "0" &&
+      this.currentValue[1] !== "." &&
+      value === "0"
+    ) {
+      return;
+    }
     this.currentValue = `${this.currentValue}${value}`;
-    console.log(typeof this.currentValue, typeof value);
     this.updateInputField();
   }
 
@@ -40,7 +43,6 @@ export default class Calculator {
     let result;
     const prev = parseFloat(this.prevValue);
     const current = parseFloat(this.currentValue);
-    console.log(prev, current);
     if (Number.isNaN(prev) || Number.isNaN(current)) return;
     if (this.operation === "+") {
       result = prev + current;

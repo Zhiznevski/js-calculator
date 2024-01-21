@@ -1,0 +1,13 @@
+.function-button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color:#4E505F;
+    padding: 1.2em 2.5em;
+    text-align: center;
+}
+
+.functions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+}

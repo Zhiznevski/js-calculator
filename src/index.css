@@ -1,0 +1,64 @@
+body {
+    font-family: 'Roboto';
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #F1F2F3;
+    transition: .5s;
+}
+
+.body-ligth-mode {
+    background-color:#121212;
+}
+.wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #161A20;
+}
+
+.keyboard {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 4px;
+    padding-bottom: 5px;
+
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.themeBtn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-image: url("./assets/modeDark.svg");
+}
+.themeBtn-light-mode {
+    background-image: url("./assets/modeLight.svg");
+}
+
+.wrapper-light-mode {
+    color: #000000;
+    background-color: #F1F2F3;
+}
+
+.digits-light-mode {
+    background-color: #FFFFFF !important;
+}
+
+.func-light-mode {
+    background-color: #D2D3DA !important;
+}
